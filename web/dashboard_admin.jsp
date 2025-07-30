@@ -85,12 +85,12 @@
                 <!-- Sidebar -->
                 <nav class="col-md-3 col-lg-2 sidebar">
                     <h4>Admin KuyBELI</h4>
-                    <a href="home.jsp">🏠 Home</a>
+                    <a href="main_menu.jsp">🏠 Home</a>
                     <a href="Data_register.jsp">👤 Data Register</a>
                     <a href="data_barang.jsp">📦 Data Barang</a>
                     <a href="Data_pesanan.jsp">🛒 Data Pesanan</a>
 
-                    <a href="home.jsp">🚪 Logout</a>
+                    <a href="login.jsp">🚪 Logout</a>
                 </nav>
 
                 <!-- Main Content -->

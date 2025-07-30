@@ -294,7 +294,7 @@
             <h4 class="mb-4">
                 <i class="fas fa-store me-2"></i>KuyBELI
             </h4>
-            <a href="home.jsp">
+            <a href="main_menu.jsp">
                 <i class="fas fa-home me-3"></i>
                 <span>Home</span>
             </a>
@@ -396,7 +396,7 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><%= rs.getString("nama_barang") %></h5>
                             <p class="price mb-3">
-                                <i class="fas fa-tag me-1"></i>Rp <%= String.format("%,.0f", rs.getDouble("harga")) %>
+                                <i class="fas fa-tag me-1"></i>Rp <%= String.format("%,.0f",rs.getDouble("harga")) %>
                             </p>
                             <div class="mt-auto">
                                 <form action="keranjang.jsp" method="post" class="w-100">
