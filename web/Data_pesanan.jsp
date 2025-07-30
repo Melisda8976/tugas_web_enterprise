@@ -709,12 +709,28 @@
     }
 
     // Delete invoice with confirmation
-    function deleteInvoice(id, nama) {
-        if (confirm(`Apakah Anda yakin ingin menghapus pesanan dari "${nama}"?\n\nTindakan ini tidak dapat dibatalkan!`)) {
-            showLoading();
-            window.location.href = `InvoiceServlet?action=delete&id=${id}`;
-        }
+   function deleteInvoice(id, nama) {
+    if (confirm('Yakin ingin menghapus pesanan "' + nama + '"?\nTindakan ini tidak dapat dibatalkan!')) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'InvoiceServlet';
+
+        const actionInput = document.createElement('input');
+        actionInput.type = 'hidden';
+        actionInput.name = 'action';
+        actionInput.value = 'delete';
+
+        const idInput = document.createElement('input');
+        idInput.type = 'hidden';
+        idInput.name = 'id';
+        idInput.value = id;
+
+        form.appendChild(actionInput);
+        form.appendChild(idInput);
+        document.body.appendChild(form);
+        form.submit();
     }
+}
 
     // Show loading overlay
     function showLoading() {
