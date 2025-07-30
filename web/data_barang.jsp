@@ -99,7 +99,7 @@
 
     <!-- Table -->
     <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table id="dataBarangTable" class="table table-bordered table-hover">
             <thead class="thead-light">
             <tr>
                 <th width="5%">No</th>
@@ -203,6 +203,13 @@
             %>
             </tbody>
         </table>
+                        <button class="btn btn-success" onclick="window.location.href='ExportExcelBarangServlet'">
+                <i class="fas fa-file-excel"></i> Export ke Excel
+            </button>
+               <button class="btn btn-primary" onclick="window.location.href='ExportDocxBarangServlet'">
+    <i class="fas fa-file-word"></i> Export ke Word
+</button>
+
     </div>
 
     <!-- Modal Form -->
@@ -413,5 +420,12 @@
         }
     });
 </script>
+<script>
+
+</script>
+<!-- jsPDF dan autoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
 </body>
 </html>

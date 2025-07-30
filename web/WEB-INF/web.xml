@@ -44,6 +44,14 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlet.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExportExcelBarangServlet</servlet-name>
+        <servlet-class>servlet.ExportExcelBarangServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExportDocxBarangServlet</servlet-name>
+        <servlet-class>servlet.ExportDocxBarangServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GoogleLoginServlet</servlet-name>
         <url-pattern>/GoogleLoginServlet</url-pattern>
@@ -87,5 +95,13 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExportExcelBarangServlet</servlet-name>
+        <url-pattern>/ExportExcelBarangServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExportDocxBarangServlet</servlet-name>
+        <url-pattern>/ExportDocxBarangServlet</url-pattern>
     </servlet-mapping>
 </web-app>

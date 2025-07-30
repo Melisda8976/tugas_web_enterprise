@@ -623,6 +623,15 @@
             %>
             </tbody>
         </table>
+                <div class="d-flex gap-2 mt-3">
+          <button class="btn btn-outline-primary" onclick="exportToJSON()">
+              <i class="fas fa-file-code me-1"></i> Export JSON
+          </button>
+          <button class="btn btn-outline-danger" onclick="exportToPDF()">
+              <i class="fas fa-file-pdf me-1"></i> Export PDF
+          </button>
+      </div>
+
     </div>
 
     <div class="d-flex justify-content-between align-items-center mt-4">
@@ -787,6 +796,69 @@
             resetFilters();
         }
     });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+<script>
+function exportToJSON() {
+    const rows = document.querySelectorAll('#invoiceTable tbody tr[data-status]');
+    const data = [];
+
+    rows.forEach(row => {
+        if (row.style.display === 'none') return;
+
+        const id = row.querySelector('td:nth-child(1)').innerText.trim();
+        const nama = row.querySelector('.customer-name')?.innerText.trim() || '';
+        const tanggal = row.querySelector('.date-day')?.innerText.trim() || '';
+        const waktu = row.querySelector('.date-display small')?.innerText.trim() || '';
+        const status = row.querySelector('.status-badge')?.innerText.trim() || '';
+
+        data.push({
+            id: id.replace("#", ""),
+            nama,
+            tanggal,
+            waktu,
+            status
+        });
+    });
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "data_pesanan.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+async function exportToPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.text("Laporan Data Pesanan", 14, 15);
+    const headers = [["ID", "Nama", "Tanggal", "Waktu", "Status"]];
+    const rows = [];
+
+    document.querySelectorAll('#invoiceTable tbody tr[data-status]').forEach(row => {
+        if (row.style.display === 'none') return;
+
+        const id = row.querySelector('td:nth-child(1)').innerText.trim().replace("#", "");
+        const nama = row.querySelector('.customer-name')?.innerText.trim() || '';
+        const tanggal = row.querySelector('.date-day')?.innerText.trim() || '';
+        const waktu = row.querySelector('.date-display small')?.innerText.trim() || '';
+        const status = row.querySelector('.status-badge')?.innerText.trim() || '';
+
+        rows.push([id, nama, tanggal, waktu, status]);
+    });
+
+    doc.autoTable({
+        head: headers,
+        body: rows,
+        startY: 25
+    });
+
+    doc.save("data_pesanan.pdf");
+}
 </script>
 </body>
 </html>
