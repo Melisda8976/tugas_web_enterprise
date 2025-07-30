@@ -835,7 +835,7 @@ async function exportToPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    doc.text("Laporan Data Pesanan", 14, 15);
+    doc.text("Data Pesanan", 14, 15);
     const headers = [["ID", "Nama", "Tanggal", "Waktu", "Status"]];
     const rows = [];
 
